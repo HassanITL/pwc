@@ -1,0 +1,42 @@
+plugins {
+	id 'org.springframework.boot' version '2.4.2'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'me.ideatolife'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	compile group: 'org.hibernate', name: 'hibernate-spatial'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.postgresql:postgresql'
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+	compile 'org.redisson:redisson-spring-boot-starter'
+	implementation 'io.jsonwebtoken:jjwt:0.2'
+	compile group: 'com.alicp.jetcache', name: 'jetcache-starter-redis'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
+	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
+	compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+	compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf'
+	compile("io.springfox:springfox-swagger2:2.9.2") {
+		exclude module: 'mapstruct' // necessary in my case to not end up with multiple mapstruct versions
+	}
+	compile('org.springframework.boot:spring-boot-starter-web')
+}
+
+test {
+	useJUnitPlatform()
+}
